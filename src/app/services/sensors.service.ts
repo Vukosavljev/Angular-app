@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { SensorsModel } from './../models/sensors.model';
+import {  SensorModel } from './../models/sensor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class SensorsService {
 
   constructor(private http: HttpClient) { }
 
-  getSensors(): Observable<SensorsModel[]> {
-    return this.http.get(this.SENSORS_URL) as Observable<SensorsModel[]>;
+  getSensors(): Observable<SensorModel[]> {
+    return this.http.get(this.SENSORS_URL) as Observable<SensorModel[]>;
   }
 }

@@ -1,0 +1,21 @@
+.holder {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+
+  .sensor-image {
+    height: 5rem;
+    width: 3rem;
+    color: green;
+  }
+
+  .parameter-values {
+    display: flex;
+    align-items: center;
+
+    .unit {
+      font-size: .8rem;
+    }
+  }
+}
+

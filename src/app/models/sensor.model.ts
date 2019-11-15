@@ -1,4 +1,4 @@
-export class SensorsModel {
+export class SensorModel {
   id: number;
   name: string;
   image: string;

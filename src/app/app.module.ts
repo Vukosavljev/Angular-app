@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { GridViewComponent } from './grid-view/grid-view.component';
 import { CardViewComponent } from './card-view/card-view.component';
 import { CardComponent } from './card-view/card/card.component';
+import { GetHhMmPipe } from './pipes/get-hh-mm.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CardComponent } from './card-view/card/card.component';
     HeaderComponent,
     GridViewComponent,
     CardViewComponent,
-    CardComponent
+    CardComponent,
+    GetHhMmPipe
   ],
   imports: [
     BrowserModule,

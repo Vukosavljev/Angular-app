@@ -1,3 +1,14 @@
 <mat-card>
-  <mat-card-title>{{sensor.name}}</mat-card-title>
+  <mat-card-title>{{ sensor.name }}</mat-card-title>
+  <mat-card-content>
+    <p>{{ sensor.path }}</p>
+    <p> @{{ sensor.lastUpdate | getHhMm }}</p>
+  </mat-card-content>
+  <div class="holder">
+    <img mat-card-image class="sensor-image" [src]="'assets/' + sensor.image" [alt]="sensor.name">
+    <div class="parameter-values" *ngIf="sensor.value" >
+      <p class="unit">{{ sensor.value }}</p>
+      <p class="unit">{{ sensor.unitSymbol }}</p>
+    </div>
+  </div>
 </mat-card>

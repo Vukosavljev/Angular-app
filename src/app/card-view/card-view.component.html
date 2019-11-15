@@ -1,1 +1,13 @@
-<app-card *ngFor="let sensor of sensors" [sensor]="sensor" ></app-card>
+<div
+  fxLayout.lt-md="column wrap"
+  fxLayout.md="row wrap"
+  fxLayoutAlign="space-around center"
+  fxLayoutGap="2rem"
+  >
+    <app-card
+      *ngFor="let sensor of sensors"
+      [sensor]="sensor"
+      fxFlex.lt-md="60%"
+    >
+  </app-card>
+</div>
