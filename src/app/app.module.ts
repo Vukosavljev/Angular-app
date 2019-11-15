@@ -1,19 +1,26 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
+import { MaterialModule } from './material/material.module';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { GridViewComponent } from './grid-view/grid-view.component';
+import { CardViewComponent } from './card-view/card-view.component';
+import { CardComponent } from './card-view/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    GridViewComponent,
+    CardViewComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +28,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
-    MatCardModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
