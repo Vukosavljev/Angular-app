@@ -8,27 +8,30 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatProgressBarModule,
-    MatButtonModule,
-  ],
-  exports: [
-    MatCardModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatProgressBarModule,
-    MatButtonModule,
-  ]
+    declarations: [],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatProgressBarModule,
+        MatButtonModule,
+        MatSnackBarModule
+    ],
+    exports: [
+        MatCardModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatProgressBarModule,
+        MatButtonModule,
+        MatSnackBarModule
+    ]
 })
-export class MaterialModule { }
+export class MaterialModule {}

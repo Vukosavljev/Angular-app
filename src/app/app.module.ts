@@ -8,6 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,26 +20,28 @@ import { FilterComponent } from './filter/filter.component';
 import { AddCardComponent } from './add-card/add-card.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    GridViewComponent,
-    CardViewComponent,
-    CardComponent,
-    GetHhMmPipe,
-    FilterComponent,
-    AddCardComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-    MaterialModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        GridViewComponent,
+        CardViewComponent,
+        CardComponent,
+        GetHhMmPipe,
+        FilterComponent,
+        AddCardComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
+        MaterialModule
+    ],
+    providers: [
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

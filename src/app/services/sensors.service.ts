@@ -3,18 +3,22 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import {  SensorModel } from './../models/sensor.model';
+import { SensorModel } from './../models/sensor.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class SensorsService {
-  BASE_URL = 'http://localhost:3000';
-  SENSORS_URL = this.BASE_URL + '/sensors';
+    BASE_URL = 'http://localhost:3000';
+    SENSORS_URL = this.BASE_URL + '/sensors';
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
-  getSensors(): Observable<SensorModel[]> {
-    return this.http.get(this.SENSORS_URL) as Observable<SensorModel[]>;
-  }
+    getSensors(): Observable<SensorModel[]> {
+        return this.http.get(this.SENSORS_URL) as Observable<SensorModel[]>;
+    }
+
+    addSensor(newSensor: SensorModel): Observable<SensorModel> {
+        return this.http.post<SensorModel>(this.SENSORS_URL, newSensor);
+    }
 }
