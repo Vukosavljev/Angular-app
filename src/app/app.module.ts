@@ -18,6 +18,7 @@ import { CardComponent } from './card-view/card/card.component';
 import { GetHhMmPipe } from './pipes/get-hh-mm.pipe';
 import { FilterComponent } from './filter/filter.component';
 import { AddCardComponent } from './add-card/add-card.component';
+import { EditCardComponent } from './edit-card/edit-card.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { AddCardComponent } from './add-card/add-card.component';
         CardComponent,
         GetHhMmPipe,
         FilterComponent,
-        AddCardComponent
+        AddCardComponent,
+        EditCardComponent
     ],
     imports: [
         BrowserModule,

@@ -35,7 +35,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
             type: ['', Validators.required],
             image: ['', Validators.required],
             unitSymbol: [null],
-            value: [false]
+            value: ['']
         });
     }
 

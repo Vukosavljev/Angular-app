@@ -1,13 +1,15 @@
 .header {
-  background-color: pink;
+    background-color: pink;
 
-  &--title {
-    color: red;
-    padding: 1rem;
-    text-align: center;
-  }
+    &--title {
+        color: red;
+        padding: 1rem;
+        text-align: center;
+        cursor: pointer;
+    }
 
-  .active {
-    background: green;
-  }
+    .active {
+        background: blue;
+        color: white;
+    }
 }

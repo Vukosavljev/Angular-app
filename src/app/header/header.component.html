@@ -1,12 +1,26 @@
 <header
-  fxLayout="column"
-  fxLayout.gt-xs="row"
-  fxLayoutAlign="space-between center"
-  class="header">
-    <h1 class="header--title">Sensor App</h1>
-    <button
-      mat-stroked-button
-      color="accent"
-      routerLink="/add-card"
-      routerLinkActive="active">Add sensor</button>
+    fxLayout="column"
+    fxLayout.gt-xs="row"
+    fxLayoutAlign="space-between center"
+    class="header"
+>
+    <h1 class="header--title" routerLink="/card-view">Sensor App</h1>
+    <div>
+        <button
+            mat-stroked-button
+            color="accent"
+            routerLink="/add-card"
+            routerLinkActive="active"
+        >
+            Add sensor
+        </button>
+        <button
+            mat-stroked-button
+            color="accent"
+            routerLink="/edit-card"
+            routerLinkActive="active"
+        >
+            Edit sensor
+        </button>
+    </div>
 </header>
