@@ -27,4 +27,8 @@ export class EditCardComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subs.unsubscribe();
     }
+
+    onSubmit(formValue) {
+        console.log(formValue);
+    }
 }

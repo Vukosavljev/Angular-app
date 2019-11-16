@@ -21,4 +21,9 @@ export class SensorsService {
     addSensor(newSensor: SensorModel): Observable<SensorModel> {
         return this.http.post<SensorModel>(this.SENSORS_URL, newSensor);
     }
+
+    updateSensor(sensor: SensorModel): Observable<SensorModel> {
+        const url = this.SENSORS_URL + `/${sensor.id}`;
+        return this.http.put<SensorModel>(url, sensor);
+    }
 }

@@ -138,6 +138,26 @@
       "value": false,
       "lastUpdate": 1573915619497,
       "id": 14
+    },
+    {
+      "name": "pokazatelj",
+      "path": "*-*-",
+      "type": "ACTUATOR",
+      "image": "images/ico_humidity.svg",
+      "unitSymbol": "#",
+      "value": "4444",
+      "lastUpdate": 1573929255895,
+      "id": 15
+    },
+    {
+      "name": "des",
+      "path": "222",
+      "type": "ALARM",
+      "image": "images/ico_humidity.svg",
+      "unitSymbol": "",
+      "value": "",
+      "id": 16,
+      "lastUpdate": 1573930888552
     }
   ]
 }

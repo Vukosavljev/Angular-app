@@ -1,1 +1,7 @@
-hello
+<app-card-form
+    *ngFor="let sensor of allSensors"
+    [title]="sensor.name"
+    [buttonTitle]="'Edit'"
+    [sensorData]="sensor"
+    (formValue)="onSubmit($event)"
+></app-card-form>

@@ -1,14 +1,11 @@
+import { SensorModel } from './../models/sensor.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { SensorsService } from './../services/sensors.service';
-import { SensorModel } from '../models/sensor.model';
-import SENSOR_TYPES from '../constants/sensor-types';
-import SENSOR_IMAGES from '../constants/sensor-images';
 
 @Component({
     selector: 'app-add-card',
@@ -17,36 +14,25 @@ import SENSOR_IMAGES from '../constants/sensor-images';
 })
 export class AddCardComponent implements OnInit, OnDestroy {
     private subscriptions = new Subscription();
-    addSensorForm: FormGroup;
-    sensorTypes = SENSOR_TYPES;
-    sensorImages = SENSOR_IMAGES;
 
+    headerTitle = 'Add new sensor';
+    buttonTitle = 'Save sensor';
     constructor(
-        private fb: FormBuilder,
         private sensorsService: SensorsService,
         private snackBar: MatSnackBar,
         private router: Router
     ) {}
 
-    ngOnInit() {
-        this.addSensorForm = this.fb.group({
-            name: ['', Validators.required],
-            path: ['', Validators.required],
-            type: ['', Validators.required],
-            image: ['', Validators.required],
-            unitSymbol: [null],
-            value: ['']
-        });
-    }
+    ngOnInit() {}
 
     ngOnDestroy() {
         this.subscriptions.unsubscribe();
     }
 
-    onSubmit() {
+    onSubmit(formValue) {
         this.subscriptions = this.sensorsService
             .addSensor({
-                ...this.addSensorForm.value,
+                ...formValue,
                 lastUpdate: new Date().getTime()
             })
             .subscribe(

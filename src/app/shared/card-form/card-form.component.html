@@ -1,0 +1,65 @@
+<mat-card class="form-holder">
+    <h2>{{ title }}</h2>
+
+    <form [formGroup]="sensorForm" class="form">
+        <div class="form-fields">
+            <mat-form-field>
+                <input matInput formControlName="name" placeholder="Name" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="path" placeholder="Path" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Sensor type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option *ngFor="let type of sensorTypes" [value]="type">
+                        {{ type }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-fields">
+            <mat-form-field>
+                <input
+                    matInput
+                    formControlName="unitSymbol"
+                    placeholder="Unit Symbol"
+                />
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="value" placeholder="Value" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Sensor image</mat-label>
+                <mat-select formControlName="image">
+                    <mat-option
+                        *ngFor="let image of sensorImages"
+                        [value]="image.imagePath"
+                    >
+                        {{ image.viewValue }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        class="save-button-holder"
+    >
+        <button
+            mat-raised-button
+            [disabled]="!sensorForm.valid || sensorForm.pristine"
+            (click)="onSubmit()"
+            color="accent"
+        >
+            {{ buttonTitle }}
+        </button>
+    </div>
+</mat-card>
