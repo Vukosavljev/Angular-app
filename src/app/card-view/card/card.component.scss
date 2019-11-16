@@ -1,16 +1,16 @@
 .holder {
   display: flex;
   justify-content: space-between;
-  margin-top: 3rem;
+  margin-top: 4rem;
 
   .sensor-image {
-    height: 3rem;
-    width: 3rem;
+    height: 2rem;
   }
 
   .parameter-values {
     display: flex;
     align-items: center;
+    max-width: 50%;
 
     .unit {
       font-size: .8rem;
