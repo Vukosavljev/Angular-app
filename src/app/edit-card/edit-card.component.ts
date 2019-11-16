@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
 import { SensorsService } from './../services/sensors.service';
-import { SensorModel } from '../models/sensor.model';
+import { SensorModel } from './../models/sensor.model';
 
 @Component({
     selector: 'app-edit-card',
@@ -14,14 +15,23 @@ export class EditCardComponent implements OnInit, OnDestroy {
     private subs = new Subscription();
     allSensors: SensorModel[];
 
-    constructor(private sensorsService: SensorsService) {}
+    constructor(
+        private sensorsService: SensorsService,
+        private snackBar: MatSnackBar
+    ) {}
 
     ngOnInit() {
-        this.subs = this.sensorsService
-            .getSensors()
-            .subscribe(
-                (response: SensorModel[]) => (this.allSensors = response)
-            );
+        this.fetchSensors();
+    }
+
+    fetchSensors() {
+        this.subs.add(
+            this.sensorsService
+                .getSensors()
+                .subscribe(
+                    (response: SensorModel[]) => (this.allSensors = response)
+                )
+        );
     }
 
     ngOnDestroy() {
@@ -29,6 +39,24 @@ export class EditCardComponent implements OnInit, OnDestroy {
     }
 
     onSubmit(formValue) {
-        console.log(formValue);
+        const newSensor = {
+            ...formValue,
+            lastUpdated: new Date().getTime()
+        };
+
+        this.subs.add(
+            this.sensorsService.updateSensor(newSensor).subscribe(
+                (response: SensorModel) => {
+                    this.snackBar.open(
+                        `You successfully updated sensor ${response.name}.`
+                    );
+                    this.fetchSensors();
+                },
+                erorr =>
+                    this.snackBar.open(
+                        'Sensor has not been updated, please try again.'
+                    )
+            )
+        );
     }
 }

@@ -71,7 +71,7 @@
       "type": "ALARM"
     },
     {
-      "name": "de",
+      "name": "Novo Ime",
       "path": "path",
       "type": "ALARM",
       "image": "images/ico_pressure.svg",
@@ -80,14 +80,14 @@
       "id": 8
     },
     {
-      "name": "spec",
+      "name": "spec1",
       "path": "pathchiba",
       "type": "ALARM",
       "image": "images/ico_switcher.svg",
-      "unitSymbol": null,
+      "unitSymbol": "!!@",
       "value": "",
-      "lastUpdate": 1573913335050,
-      "id": 9
+      "id": 9,
+      "lastUpdated": 1573933011860
     },
     {
       "name": "des",
@@ -150,14 +150,14 @@
       "id": 15
     },
     {
-      "name": "des",
+      "name": "desk",
       "path": "222",
       "type": "ALARM",
       "image": "images/ico_humidity.svg",
       "unitSymbol": "",
       "value": "",
       "id": 16,
-      "lastUpdate": 1573930888552
+      "lastUpdated": 1573933214850
     }
   ]
 }
