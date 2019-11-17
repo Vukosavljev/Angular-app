@@ -16,6 +16,7 @@ export class CardViewComponent implements OnInit, OnDestroy {
     private sensorsSub = new Subscription();
     sensors: SensorModel[] = [];
     allSensors: SensorModel[] = [];
+    errorOccured = false;
 
     constructor(
         private sensorsService: SensorsService,
@@ -43,7 +44,7 @@ export class CardViewComponent implements OnInit, OnDestroy {
                     this.sensors = this.allSensors;
                     console.log(this.sensors);
                 },
-                error => console.log(error)
+                () => (this.errorOccured = true)
             )
         );
     }

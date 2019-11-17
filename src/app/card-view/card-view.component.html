@@ -1,5 +1,9 @@
 <app-filter (searchValue)="onFilterSearch($event)"></app-filter>
 
+<div *ngIf="errorOccured">
+    <h4 class="error-message">Sorry, an error occured, please try later.</h4>
+</div>
+
 <div
     fxLayout="row wrap"
     fx-Flex="1 1 100%"
