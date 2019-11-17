@@ -1,10 +1,8 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
-import { SensorDeleteService } from './../sensor-delete-observer.service';
-import { SensorsService } from './../../services/sensors.service';
+import { ConfirmationDialogueComponent } from 'src/app/shared/confirmation-dialogue/confirmation-dialogue.component';
 import { SensorModel } from './../../models/sensor.model';
 
 @Component({
@@ -12,32 +10,17 @@ import { SensorModel } from './../../models/sensor.model';
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit, OnDestroy {
+export class CardComponent implements OnInit {
     @Input() sensor: SensorModel;
-    private subs = new Subscription();
 
-    constructor(
-        private sensorService: SensorsService,
-        private sensorDeleteService: SensorDeleteService,
-        private snackBar: MatSnackBar
-    ) {}
+    constructor(private dialog: MatDialog) {}
 
     ngOnInit() {}
 
-    ngOnDestroy() {
-        this.subs.unsubscribe();
-    }
-
     onDelete() {
-        this.subs = this.sensorService.deleteSensor(this.sensor).subscribe(
-            () => {
-                this.snackBar.open(`You successfully deleted sensor.`);
-                this.sensorDeleteService.deleteSensorNotify(this.sensor.id);
-            },
-            () =>
-                this.snackBar.open(
-                    `Sensor has not been deleted, please try again.`
-                )
-        );
+        this.dialog.open(ConfirmationDialogueComponent, {
+            width: '400px',
+            data: this.sensor
+        });
     }
 }

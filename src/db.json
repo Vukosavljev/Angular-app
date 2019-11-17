@@ -100,26 +100,6 @@
       "id": 10
     },
     {
-      "name": "des",
-      "path": "////",
-      "type": "ALARM",
-      "image": "images/ico_slider.svg",
-      "unitSymbol": null,
-      "value": false,
-      "lastUpdate": 1573914532409,
-      "id": 11
-    },
-    {
-      "name": "ghg",
-      "path": "des",
-      "type": "ACTUATOR",
-      "image": "images/ico_slider.svg",
-      "unitSymbol": "C",
-      "value": false,
-      "lastUpdate": 1573915578355,
-      "id": 13
-    },
-    {
       "name": "pokazatelj",
       "path": "*-*-",
       "type": "ACTUATOR",

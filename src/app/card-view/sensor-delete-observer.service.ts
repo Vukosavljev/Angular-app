@@ -8,7 +8,6 @@ export class SensorDeleteService {
     deletedSendor$ = this.deletedSensor.asObservable();
 
     deleteSensorNotify(id: number) {
-        console.log(id);
         return this.deletedSensor.next(id);
     }
 }

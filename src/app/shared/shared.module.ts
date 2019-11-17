@@ -7,9 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material/material.module';
 import { CardFormComponent } from './card-form/card-form.component';
+import { ConfirmationDialogueComponent } from './confirmation-dialogue/confirmation-dialogue.component';
 
 @NgModule({
-    declarations: [CardFormComponent],
+    declarations: [CardFormComponent, ConfirmationDialogueComponent],
     imports: [
         CommonModule,
         ReactiveFormsModule,
@@ -25,7 +26,9 @@ import { CardFormComponent } from './card-form/card-form.component';
         BrowserAnimationsModule,
         HttpClientModule,
         MaterialModule,
-        CardFormComponent
-    ]
+        CardFormComponent,
+        ConfirmationDialogueComponent
+    ],
+    entryComponents: [ConfirmationDialogueComponent]
 })
 export class SharedModule {}

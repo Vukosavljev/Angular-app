@@ -1,0 +1,14 @@
+.container {
+    padding: 20px;
+
+    .button-holder {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 2rem;
+
+        .cancel-btn:hover {
+            background-color: pink;
+            color: #fff;
+        }
+    }
+}
