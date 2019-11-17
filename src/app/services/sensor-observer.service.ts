@@ -1,7 +1,7 @@
 import { SensorModel } from './../models/sensor.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SensorObserverService {
@@ -9,18 +9,17 @@ export class SensorObserverService {
         SensorModel[] | HttpErrorResponse | {}
     >({});
     allSendors$ = this.sensorSubject.asObservable();
-    allSensors: SensorModel[];
 
     fetchSensors(sensors: SensorModel[] | HttpErrorResponse): void {
         return this.sensorSubject.next(sensors);
     }
 
-    getSensors() {
+    private getSensorsValue() {
         return this.sensorSubject.getValue();
     }
 
     deleteSensor(id: number): void {
-        const currentSensors = this.getSensors();
+        const currentSensors = this.getSensorsValue();
         if (Array.isArray(currentSensors)) {
             const newSensors = currentSensors.filter(
                 (sensor: SensorModel) => sensor.id !== id
@@ -30,7 +29,7 @@ export class SensorObserverService {
     }
 
     addSensor(newSensor: SensorModel) {
-        const currentSensors = this.getSensors();
+        const currentSensors = this.getSensorsValue();
         if (Array.isArray(currentSensors)) {
             this.sensorSubject.next([...currentSensors, newSensor]);
         }

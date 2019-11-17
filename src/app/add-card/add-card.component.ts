@@ -1,11 +1,12 @@
-import { SensorModel } from './../models/sensor.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 
 import { SensorsService } from './../services/sensors.service';
+import { SensorObserverService } from '../services/sensor-observer.service';
+import { SensorModel } from './../models/sensor.model';
 
 @Component({
     selector: 'app-add-card',
@@ -19,6 +20,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
     buttonTitle = 'Save sensor';
     constructor(
         private sensorsService: SensorsService,
+        private sensorobserverService: SensorObserverService,
         private snackBar: MatSnackBar,
         private router: Router
     ) {}
@@ -37,7 +39,10 @@ export class AddCardComponent implements OnInit, OnDestroy {
             })
             .subscribe(
                 (newSensor: SensorModel) => {
-                    this.snackBar.open('You successfully added sensor.');
+                    this.snackBar.open(
+                        `You successfully added ${newSensor.name} sensor.`
+                    );
+                    this.sensorobserverService.addSensor(newSensor);
                     this.router.navigate(['home']);
                 },
                 error => {

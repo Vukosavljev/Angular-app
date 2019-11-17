@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
 import { SensorsService } from './../services/sensors.service';
+import { SensorObserverService } from '../services/sensor-observer.service';
 import { SensorModel } from './../models/sensor.model';
 
 @Component({
@@ -16,6 +17,7 @@ export class EditCardComponent implements OnInit, OnDestroy {
     allSensors: SensorModel[];
 
     constructor(
+        private sensorObserverService: SensorObserverService,
         private sensorsService: SensorsService,
         private snackBar: MatSnackBar
     ) {}
@@ -26,11 +28,9 @@ export class EditCardComponent implements OnInit, OnDestroy {
 
     fetchSensors() {
         this.subs.add(
-            this.sensorsService
-                .getSensors()
-                .subscribe(
-                    (response: SensorModel[]) => (this.allSensors = response)
-                )
+            this.sensorObserverService.allSendors$.subscribe(
+                (response: SensorModel[]) => (this.allSensors = response)
+            )
         );
     }
 

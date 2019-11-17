@@ -118,6 +118,66 @@
       "value": "34",
       "id": 17,
       "lastUpdate": 1574024028286
+    },
+    {
+      "name": "sesor",
+      "path": "qw",
+      "type": "ACTUATOR",
+      "image": "images/ico_humidity.svg",
+      "unitSymbol": "++",
+      "value": "555",
+      "id": 18,
+      "lastUpdate": 1574024260042
+    },
+    {
+      "name": "new",
+      "path": "lklk",
+      "type": "ACTUATOR",
+      "image": "images/ico_pressure.svg",
+      "unitSymbol": "ks",
+      "value": "99",
+      "id": 19,
+      "lastUpdate": 1574024357546
+    },
+    {
+      "name": "sense",
+      "path": "-",
+      "type": "ALARM",
+      "image": "images/ico_temperature.svg",
+      "unitSymbol": "ki",
+      "value": "-",
+      "id": 20,
+      "lastUpdate": 1574024882010
+    },
+    {
+      "name": "des",
+      "path": "fds",
+      "type": "ACTUATOR",
+      "image": "images/ico_temperature.svg",
+      "unitSymbol": "55f",
+      "value": "fds",
+      "id": 21,
+      "lastUpdate": 1574025093248
+    },
+    {
+      "name": "yuhj",
+      "path": "dsf",
+      "type": "ACTUATOR",
+      "image": "images/ico_temperature.svg",
+      "unitSymbol": "fd",
+      "value": "df",
+      "id": 22,
+      "lastUpdate": 1574025528230
+    },
+    {
+      "name": "yup",
+      "path": "d",
+      "type": "ACTUATOR",
+      "image": "images/ico_temperature.svg",
+      "unitSymbol": "df",
+      "value": "sdf",
+      "id": 23,
+      "lastUpdate": 1574025766709
     }
   ]
 }
