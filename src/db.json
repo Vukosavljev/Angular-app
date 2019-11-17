@@ -90,16 +90,6 @@
       "lastUpdated": 1573933011860
     },
     {
-      "name": "des",
-      "path": "////",
-      "type": "ALARM",
-      "image": "images/ico_slider.svg",
-      "unitSymbol": null,
-      "value": false,
-      "lastUpdate": 1573914528593,
-      "id": 10
-    },
-    {
       "name": "pokazatelj",
       "path": "*-*-",
       "type": "ACTUATOR",
@@ -108,6 +98,26 @@
       "value": "4444",
       "lastUpdate": 1573929255895,
       "id": 15
+    },
+    {
+      "name": "ghg",
+      "path": "77",
+      "type": "ALARM",
+      "image": "images/ico_switcher.svg",
+      "unitSymbol": "C",
+      "value": "44",
+      "id": 16,
+      "lastUpdate": 1574023961476
+    },
+    {
+      "name": "nov senzor",
+      "path": "//",
+      "type": "ACTUATOR",
+      "image": "images/ico_temperature.svg",
+      "unitSymbol": "kj",
+      "value": "34",
+      "id": 17,
+      "lastUpdate": 1574024028286
     }
   ]
 }

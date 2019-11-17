@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material/material.module';
 import { CardFormComponent } from './card-form/card-form.component';
@@ -22,6 +22,7 @@ import { ConfirmationDialogueComponent } from './confirmation-dialogue/confirmat
     exports: [
         CommonModule,
         ReactiveFormsModule,
+        FormsModule,
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,

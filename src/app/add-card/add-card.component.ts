@@ -38,7 +38,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
             .subscribe(
                 (newSensor: SensorModel) => {
                     this.snackBar.open('You successfully added sensor.');
-                    this.router.navigate(['card-view']);
+                    this.router.navigate(['home']);
                 },
                 error => {
                     this.snackBar.open(

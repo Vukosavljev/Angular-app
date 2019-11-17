@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { ConfirmationDialogueComponent } from 'src/app/shared/confirmation-dialogue/confirmation-dialogue.component';
-import { SensorModel } from './../../models/sensor.model';
+import { ConfirmationDialogueComponent } from './../../../shared/confirmation-dialogue/confirmation-dialogue.component';
+import { SensorModel } from './../../../models/sensor.model';
 
 @Component({
     selector: 'app-card',

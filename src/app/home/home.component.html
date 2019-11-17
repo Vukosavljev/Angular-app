@@ -1,0 +1,12 @@
+<div class="view-toggler">
+    <h6 class="title">
+        {{ cardView ? 'Card View' : 'Grid View' }}
+    </h6>
+    <mat-slide-toggle [(ngModel)]="cardView"></mat-slide-toggle>
+</div>
+
+<app-card-view *ngIf="cardView; else gridView"></app-card-view>
+
+<ng-template #gridView>
+    <app-grid-view></app-grid-view>
+</ng-template>

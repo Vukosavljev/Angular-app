@@ -1,10 +1,9 @@
+import { SearchModel } from './../../../models/search.model';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
-
-import { SearchModel } from './../models/search.model';
-import SENSOR_TYPES from '../constants/sensor-types';
+import SENSOR_TYPES from '../../../constants/sensor-types';
 
 @Component({
     selector: 'app-filter',
