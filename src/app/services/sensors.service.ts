@@ -26,4 +26,9 @@ export class SensorsService {
         const url = this.SENSORS_URL + `/${sensor.id}`;
         return this.http.put<SensorModel>(url, sensor);
     }
+
+    deleteSensor(sensor: SensorModel): Observable<SensorModel> {
+        const url = this.SENSORS_URL + `/${sensor.id}`;
+        return this.http.delete<SensorModel>(url);
+    }
 }

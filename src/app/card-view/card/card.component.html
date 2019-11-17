@@ -3,7 +3,9 @@
         <h3>
             {{ sensor.name }}
         </h3>
-        <button mat-raised-button color="primary">Delete</button>
+        <button mat-raised-button color="primary" (click)="onDelete()">
+            Delete
+        </button>
     </mat-card-title>
 
     <mat-card-content>

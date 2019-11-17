@@ -110,16 +110,6 @@
       "id": 11
     },
     {
-      "name": "fe",
-      "path": "//",
-      "type": "ALARM",
-      "image": "images/ico_switcher.svg",
-      "unitSymbol": null,
-      "value": false,
-      "lastUpdate": 1573914573270,
-      "id": 12
-    },
-    {
       "name": "ghg",
       "path": "des",
       "type": "ACTUATOR",
@@ -130,16 +120,6 @@
       "id": 13
     },
     {
-      "name": "saki",
-      "path": "//////////////////////",
-      "type": "ALARM",
-      "image": "images/ico_pressure.svg",
-      "unitSymbol": "decibel",
-      "value": false,
-      "lastUpdate": 1573915619497,
-      "id": 14
-    },
-    {
       "name": "pokazatelj",
       "path": "*-*-",
       "type": "ACTUATOR",
@@ -148,16 +128,6 @@
       "value": "4444",
       "lastUpdate": 1573929255895,
       "id": 15
-    },
-    {
-      "name": "desk",
-      "path": "222",
-      "type": "ALARM",
-      "image": "images/ico_humidity.svg",
-      "unitSymbol": "",
-      "value": "",
-      "id": 16,
-      "lastUpdated": 1573933214850
     }
   ]
 }
