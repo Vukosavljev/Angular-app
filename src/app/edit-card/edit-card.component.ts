@@ -23,10 +23,6 @@ export class EditCardComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
-        this.fetchSensors();
-    }
-
-    fetchSensors() {
         this.subs.add(
             this.sensorObserverService.allSendors$.subscribe(
                 (response: SensorModel[]) => (this.allSensors = response)
@@ -47,10 +43,11 @@ export class EditCardComponent implements OnInit, OnDestroy {
         this.subs.add(
             this.sensorsService.updateSensor(newSensor).subscribe(
                 (response: SensorModel) => {
+                    console.log(response);
                     this.snackBar.open(
                         `You successfully updated sensor ${response.name}.`
                     );
-                    this.fetchSensors();
+                    this.sensorObserverService.updateSensor(response);
                 },
                 erorr =>
                     this.snackBar.open(

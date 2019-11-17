@@ -100,14 +100,14 @@
       "id": 15
     },
     {
-      "name": "ghg",
+      "name": "g",
       "path": "77",
       "type": "ALARM",
       "image": "images/ico_switcher.svg",
       "unitSymbol": "C",
       "value": "44",
       "id": 16,
-      "lastUpdate": 1574023961476
+      "lastUpdated": 1574027321363
     },
     {
       "name": "nov senzor",

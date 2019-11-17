@@ -1,7 +1,9 @@
-import { SensorModel } from './../models/sensor.model';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { BehaviorSubject } from 'rxjs';
+
+import { SensorModel } from './../models/sensor.model';
 
 @Injectable({ providedIn: 'root' })
 export class SensorObserverService {
@@ -14,24 +16,29 @@ export class SensorObserverService {
         return this.sensorSubject.next(sensors);
     }
 
-    private getSensorsValue() {
-        return this.sensorSubject.getValue();
+    private getSensorsArrayValue() {
+        const currentSensors = this.sensorSubject.getValue();
+        if (Array.isArray(currentSensors)) {
+            return currentSensors;
+        }
     }
 
     deleteSensor(id: number): void {
-        const currentSensors = this.getSensorsValue();
-        if (Array.isArray(currentSensors)) {
-            const newSensors = currentSensors.filter(
-                (sensor: SensorModel) => sensor.id !== id
-            );
-            this.sensorSubject.next(newSensors);
-        }
+        const newSensors = this.getSensorsArrayValue().filter(
+            (sensor: SensorModel) => sensor.id !== id
+        );
+        this.sensorSubject.next(newSensors);
     }
 
     addSensor(newSensor: SensorModel) {
-        const currentSensors = this.getSensorsValue();
-        if (Array.isArray(currentSensors)) {
-            this.sensorSubject.next([...currentSensors, newSensor]);
-        }
+        this.sensorSubject.next([...this.getSensorsArrayValue(), newSensor]);
+    }
+
+    updateSensor(updatedSensor: SensorModel) {
+        const newSensors = this.getSensorsArrayValue().map(
+            (sensor: SensorModel) =>
+                sensor.id === updatedSensor.id ? updatedSensor : sensor
+        );
+        this.sensorSubject.next(newSensors);
     }
 }
