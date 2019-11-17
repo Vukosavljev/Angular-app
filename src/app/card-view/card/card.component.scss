@@ -1,20 +1,28 @@
-.holder {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4rem;
-
-  .sensor-image {
-    height: 2rem;
-  }
-
-  .parameter-values {
-    display: flex;
-    align-items: center;
-    max-width: 50%;
-
-    .unit {
-      font-size: .8rem;
-    }
-  }
+.card-sensor {
+    min-width: 300px;
 }
 
+.card-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.holder {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+
+    .sensor-image {
+        height: 2rem;
+    }
+
+    .parameter-values {
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+
+        .unit {
+            font-size: 0.8rem;
+        }
+    }
+}

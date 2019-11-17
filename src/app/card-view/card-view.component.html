@@ -1,15 +1,13 @@
-<app-filter (searchValue)="onFilterSearch($event)" ></app-filter>
+<app-filter (searchValue)="onFilterSearch($event)"></app-filter>
 
 <div
-  fxLayout.lt-md="column wrap"
-  fxLayout.md="row wrap"
-  fxLayoutAlign="space-around center"
-  fxLayoutGap="2rem"
-  >
-    <app-card
-      *ngFor="let sensor of sensors"
-      [sensor]="sensor"
-      fxFlex.lt-md="60%"
-    >
-  </app-card>
+    fxLayout="row wrap"
+    fx-Flex="1 1 100%"
+    fxLayout.xs="column"
+    fx-Flex.xs="1 1 100%"
+    fxLayoutGap="2rem"
+    class="card-holder"
+>
+    <app-card *ngFor="let sensor of sensors" [sensor]="sensor" flex="1 1 300px">
+    </app-card>
 </div>
