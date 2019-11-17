@@ -4,14 +4,7 @@
     <h4 class="error-message">Sorry, an error occured, please try later.</h4>
 </div>
 
-<div
-    fxLayout="row wrap"
-    fx-Flex="1 1 100%"
-    fxLayout.xs="column"
-    fx-Flex.xs="1 1 100%"
-    fxLayoutGap="2rem"
-    class="card-holder"
->
+<div class="card-holder">
     <app-card *ngFor="let sensor of sensors" [sensor]="sensor" flex="1 1 300px">
     </app-card>
 </div>
