@@ -1,24 +1,29 @@
 <mat-expansion-panel class="filter-panel">
-  <mat-expansion-panel-header>
-    Filter sensors
-  </mat-expansion-panel-header>
+    <mat-expansion-panel-header>
+        Filter sensors
+    </mat-expansion-panel-header>
 
-  <form [formGroup]="filterForm" fxLayout="row" fxLayoutAlign="space-around start" >
-    <mat-form-field>
-      <input matInput formControlName="name" placeholder="Filter by sensor name">
-    </mat-form-field>
+    <form
+        [formGroup]="filterForm"
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-around center"
+    >
+        <mat-form-field>
+            <input matInput formControlName="name" placeholder="Sensor name" />
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Sensor type</mat-label>
-        <mat-select formControlName="type">
-          <mat-option *ngFor="let type of sensorTypes" [value]="type">
-            {{ type }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-  </form>
+        <mat-form-field>
+            <mat-label>Sensor type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option *ngFor="let type of sensorTypes" [value]="type">
+                    {{ type }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
 </mat-expansion-panel>
 
 <div *ngIf="isLoading">
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
