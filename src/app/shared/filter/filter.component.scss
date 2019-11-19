@@ -1,0 +1,13 @@
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 600px) {
+    .filter-form {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}

@@ -1,0 +1,18 @@
+<form [formGroup]="filterForm" class="filter-form">
+    <mat-form-field>
+        <input matInput formControlName="name" placeholder="Sensor name" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Sensor type</mat-label>
+        <mat-select formControlName="type">
+            <mat-option *ngFor="let type of sensorTypes" [value]="type">
+                {{ type }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+
+<div *ngIf="isLoading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>

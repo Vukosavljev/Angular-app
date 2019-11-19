@@ -8,9 +8,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { CardFormComponent } from './card-form/card-form.component';
 import { ConfirmationDialogueComponent } from './confirmation-dialogue/confirmation-dialogue.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
-    declarations: [CardFormComponent, ConfirmationDialogueComponent],
+    declarations: [
+        CardFormComponent,
+        ConfirmationDialogueComponent,
+        FilterComponent
+    ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
@@ -28,7 +33,8 @@ import { ConfirmationDialogueComponent } from './confirmation-dialogue/confirmat
         HttpClientModule,
         MaterialModule,
         CardFormComponent,
-        ConfirmationDialogueComponent
+        ConfirmationDialogueComponent,
+        FilterComponent
     ],
     entryComponents: [ConfirmationDialogueComponent]
 })

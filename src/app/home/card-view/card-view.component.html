@@ -1,4 +1,9 @@
-<app-filter (searchValue)="onFilterSearch($event)"></app-filter>
+<mat-expansion-panel class="filter-panel">
+    <mat-expansion-panel-header>
+        Filter sensors
+    </mat-expansion-panel-header>
+    <app-filter (searchValue)="onFilterSearch($event)"></app-filter>
+</mat-expansion-panel>
 
 <div *ngIf="errorOccured">
     <h4 class="error-message">Sorry, an error occured, please try later.</h4>

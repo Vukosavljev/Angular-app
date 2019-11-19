@@ -15,7 +15,6 @@ import { EditCardComponent } from './edit-card/edit-card.component';
 import { HomeComponent } from './home/home.component';
 import { CardViewComponent } from './home/card-view/card-view.component';
 import { CardComponent } from './home/card-view/card/card.component';
-import { FilterComponent } from './home/card-view/filter/filter.component';
 
 @NgModule({
     declarations: [
@@ -25,10 +24,9 @@ import { FilterComponent } from './home/card-view/filter/filter.component';
         GridViewComponent,
         CardViewComponent,
         CardComponent,
-        FilterComponent,
         AddCardComponent,
         EditCardComponent,
-        GetHhMmPipe,
+        GetHhMmPipe
     ],
     imports: [FlexLayoutModule, SharedModule, AppRoutingModule],
     providers: [
