@@ -1,0 +1,24 @@
+.grid-view {
+    width: 90%;
+    margin: 0 auto;
+    .table {
+        width: 100%;
+
+        .action-icon {
+            width: 1rem;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .grid-view {
+        width: 70%;
+        .table {
+            .action-icon {
+                margin-right: 1rem;
+            }
+        }
+    }
+}

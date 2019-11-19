@@ -12,8 +12,12 @@ export class SensorObserverService {
     >({});
     allSendors$ = this.sensorSubject.asObservable();
 
+    private setSensorState(sensors) {
+        this.sensorSubject.next(sensors);
+    }
+
     fetchSensors(sensors: SensorModel[] | HttpErrorResponse): void {
-        return this.sensorSubject.next(sensors);
+        return this.setSensorState(sensors);
     }
 
     private getSensorsArrayValue() {
@@ -27,11 +31,11 @@ export class SensorObserverService {
         const newSensors = this.getSensorsArrayValue().filter(
             (sensor: SensorModel) => sensor.id !== id
         );
-        this.sensorSubject.next(newSensors);
+        this.setSensorState(newSensors);
     }
 
     addSensor(newSensor: SensorModel) {
-        this.sensorSubject.next([...this.getSensorsArrayValue(), newSensor]);
+        this.setSensorState([...this.getSensorsArrayValue(), newSensor]);
     }
 
     updateSensor(updatedSensor: SensorModel) {
@@ -39,6 +43,6 @@ export class SensorObserverService {
             (sensor: SensorModel) =>
                 sensor.id === updatedSensor.id ? updatedSensor : sensor
         );
-        this.sensorSubject.next(newSensors);
+        this.setSensorState(newSensors);
     }
 }
