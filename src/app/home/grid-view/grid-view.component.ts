@@ -1,5 +1,8 @@
+import { SensorsService } from './../../services/sensors.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material';
@@ -8,7 +11,6 @@ import { Subscription } from 'rxjs';
 import { SensorObserverService } from './../../services/sensor-observer.service';
 import { SensorModel } from './../../models/sensor.model';
 import { SearchModel } from './../../models/search.model';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-grid-view',
@@ -29,23 +31,29 @@ export class GridViewComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-    constructor(private sensorObserverService: SensorObserverService) {}
+    constructor(
+        private sensorObserverService: SensorObserverService,
+        private sensorService: SensorsService,
+        private snackBar: MatSnackBar
+    ) {}
 
     ngOnInit() {
-        this.subs = this.sensorObserverService.allSendors$.subscribe(
-            (sensors: SensorModel[]) => {
-                if (sensors instanceof HttpErrorResponse) {
-                    this.errorOccured = true;
-                    return;
-                }
+        this.subs.add(
+            this.sensorObserverService.allSendors$.subscribe(
+                (sensors: SensorModel[]) => {
+                    if (sensors instanceof HttpErrorResponse) {
+                        this.errorOccured = true;
+                        return;
+                    }
 
-                if (Array.isArray(sensors)) {
-                    this.dataSource = new MatTableDataSource(sensors);
-                    this.dataSource.paginator = this.paginator;
-                    this.dataSource.sort = this.sort;
-                    this.dataSource.filterPredicate = this.customFilter;
+                    if (Array.isArray(sensors)) {
+                        this.dataSource = new MatTableDataSource(sensors);
+                        this.dataSource.paginator = this.paginator;
+                        this.dataSource.sort = this.sort;
+                        this.dataSource.filterPredicate = this.customFilter;
+                    }
                 }
-            }
+            )
         );
     }
 
@@ -69,5 +77,22 @@ export class GridViewComponent implements OnInit, OnDestroy {
         this.tableFilter.name = searchValue.name;
 
         this.dataSource.filter = JSON.stringify(this.tableFilter);
+    }
+
+    onDelete(id: number) {
+        this.subs.add(
+            this.sensorService
+                .deleteSensor(id)
+                .subscribe((deletedSensor: SensorModel) => {
+                    this.sensorObserverService.deleteSensor(id);
+                    this.snackBar.open(
+                        `You successfully deleted sensor ${deletedSensor.name}.`
+                    );
+                })
+        );
+    }
+
+    onEdit(element: SensorModel) {
+        console.log(element);
     }
 }

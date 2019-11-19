@@ -36,12 +36,14 @@
             </th>
             <td mat-cell *matCellDef="let element">
                 <img
+                    (click)="onEdit(element)"
                     matTooltip="Edit sensor"
                     src="assets/images/edit-icon.svg"
                     alt="edit"
                     class="action-icon"
                 />
                 <img
+                    (click)="onDelete(element.id)"
                     matTooltip="Delete sensor"
                     src="assets/images/delete-icon.svg"
                     alt="delete"
