@@ -1,4 +1,10 @@
 <mat-card class="grid-view">
+    <mat-card>
+        <app-filter (searchValue)="onSearch($event)"></app-filter>
+    </mat-card>
+
+    <div *ngIf="errorOccured">Sorry an error occured.</div>
+
     <table mat-table [dataSource]="dataSource" matSort class="table">
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
