@@ -30,13 +30,13 @@
             </th>
             <td mat-cell *matCellDef="let element">
                 <img
-                    title="Edit sensor"
+                    matTooltip="Edit sensor"
                     src="assets/images/edit-icon.svg"
                     alt="edit"
                     class="action-icon"
                 />
                 <img
-                    title="Delete sensor"
+                    matTooltip="Delete sensor"
                     src="assets/images/delete-icon.svg"
                     alt="delete"
                     class="action-icon"
@@ -47,4 +47,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>
     </table>
+
+    <mat-paginator
+        [pageSizeOptions]="paginationSize"
+        showFirstLastButtons
+    ></mat-paginator>
 </mat-card>
