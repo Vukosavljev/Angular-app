@@ -6,6 +6,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
@@ -43,27 +44,17 @@ export class GridViewComponent implements OnInit, OnDestroy {
         private sensorObserverService: SensorObserverService,
         private sensorService: SensorsService,
         private snackBar: MatSnackBar,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private store: Store<{ sensorList: { sensors: SensorModel[] } }>
     ) {}
 
     ngOnInit() {
-        this.subs.add(
-            this.sensorObserverService.allSendors$.subscribe(
-                (sensors: SensorModel[]) => {
-                    if (sensors instanceof HttpErrorResponse) {
-                        this.errorOccured = true;
-                        return;
-                    }
-
-                    if (Array.isArray(sensors)) {
-                        this.dataSource = new MatTableDataSource(sensors);
-                        this.dataSource.paginator = this.paginator;
-                        this.dataSource.sort = this.sort;
-                        this.dataSource.filterPredicate = this.customFilter;
-                    }
-                }
-            )
-        );
+        this.store.select('sensorList').subscribe(({ sensors }) => {
+            this.dataSource = new MatTableDataSource(sensors);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+            this.dataSource.filterPredicate = this.customFilter;
+        });
     }
 
     ngOnDestroy() {

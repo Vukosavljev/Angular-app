@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
+import { StoreModule } from '@ngrx/store';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -16,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { CardViewComponent } from './home/card-view/card-view.component';
 import { CardComponent } from './home/card-view/card/card.component';
 import { EditFormWrapperComponent } from './home/grid-view/edit-form-wrapper/edit-form-wrapper.component';
+import { SensorReducer } from './store/sensor.reducer';
 
 @NgModule({
     declarations: [
@@ -30,9 +32,14 @@ import { EditFormWrapperComponent } from './home/grid-view/edit-form-wrapper/edi
         GetHhMmPipe,
         EditFormWrapperComponent
     ],
-    imports: [FlexLayoutModule, SharedModule, AppRoutingModule],
+    imports: [
+        FlexLayoutModule,
+        SharedModule,
+        AppRoutingModule,
+        StoreModule.forRoot({ sensorList: SensorReducer })
+    ],
     providers: [
-        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }
     ],
     entryComponents: [EditFormWrapperComponent],
     bootstrap: [AppComponent]
