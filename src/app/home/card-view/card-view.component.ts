@@ -3,9 +3,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { Subscription } from 'rxjs';
 
-import { SensorObserverService } from './../../services/sensor-observer.service';
 import { SearchModel } from './../../models/search.model';
 import { SensorModel } from './../../models/sensor.model';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'app-card-view',
@@ -18,21 +18,16 @@ export class CardViewComponent implements OnInit, OnDestroy {
     allSensors: SensorModel[] = [];
     errorOccured = false;
 
-    constructor(private sensorObserverService: SensorObserverService) {}
+    constructor(
+        private store: Store<{ sensorList: { sensors: SensorModel[] } }>
+    ) {}
 
     ngOnInit() {
         this.subs.add(
-            this.sensorObserverService.allSendors$.subscribe(sensorsState => {
-                if (sensorsState instanceof HttpErrorResponse) {
-                    this.errorOccured = true;
-                    return;
-                }
-
-                if (Array.isArray(sensorsState)) {
-                    this.errorOccured = false;
-                    this.allSensors = sensorsState;
-                    this.sensors = sensorsState;
-                }
+            this.store.select('sensorList').subscribe(({ sensors }) => {
+                this.errorOccured = false;
+                this.allSensors = sensors;
+                this.sensors = sensors;
             })
         );
     }

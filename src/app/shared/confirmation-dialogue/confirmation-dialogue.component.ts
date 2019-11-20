@@ -1,11 +1,13 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+import * as SensorActions from './../../store/sensor.actions';
 import { SensorModel } from './../../models/sensor.model';
 import { SensorsService } from './../../services/sensors.service';
-import { SensorObserverService } from 'src/app/services/sensor-observer.service';
 
 @Component({
     selector: 'app-confirmation-dialogue',
@@ -20,7 +22,7 @@ export class ConfirmationDialogueComponent implements OnInit, OnDestroy {
         @Inject(MAT_DIALOG_DATA) public data: SensorModel,
         private sensorService: SensorsService,
         private snackBar: MatSnackBar,
-        private sensorObserverService: SensorObserverService
+        private store: Store<{ sensorList: { sensors: SensorModel[] } }>
     ) {}
 
     ngOnInit() {}
@@ -34,7 +36,7 @@ export class ConfirmationDialogueComponent implements OnInit, OnDestroy {
         this.subs = this.sensorService.deleteSensor(id).subscribe(
             () => {
                 this.snackBar.open(`You successfully deleted sensor.`);
-                this.sensorObserverService.deleteSensor(id);
+                this.store.dispatch(new SensorActions.DeleteSensor(id));
                 this.dialog.close();
             },
             () =>

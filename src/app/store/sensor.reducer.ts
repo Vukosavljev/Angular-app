@@ -1,3 +1,4 @@
+import { SensorModel } from './../models/sensor.model';
 import * as SensorActions from './sensor.actions';
 
 const initialState = {
@@ -18,6 +19,26 @@ export function SensorReducer(
             return {
                 ...state,
                 sensors: [...state.sensors, ...action.payload]
+            };
+        case SensorActions.UPDATE_SENSOR:
+            return {
+                ...state,
+                sensors: [
+                    ...state.sensors.map((sensor: SensorModel) =>
+                        sensor.id === action.payload.id
+                            ? action.payload
+                            : sensor
+                    )
+                ]
+            };
+        case SensorActions.DELETE_SENSOR:
+            return {
+                ...state,
+                sensors: [
+                    ...state.sensors.filter(
+                        (sensor: SensorModel) => sensor.id !== action.payload
+                    )
+                ]
             };
         default:
             return state;

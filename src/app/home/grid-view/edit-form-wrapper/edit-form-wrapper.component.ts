@@ -1,12 +1,13 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Subscription } from 'rxjs';
 
-import { SensorObserverService } from './../../../services/sensor-observer.service';
 import { SensorsService } from './../../../services/sensors.service';
 import { SensorModel } from './../../../models/sensor.model';
+import * as SensorActions from './../../../store/sensor.actions';
 
 @Component({
     selector: 'app-edit-form-wrapper',
@@ -19,8 +20,8 @@ export class EditFormWrapperComponent implements OnDestroy {
         public dialog: MatDialogRef<EditFormWrapperComponent>,
         @Inject(MAT_DIALOG_DATA) public data: SensorModel,
         private sensorsService: SensorsService,
-        private sensorObserverService: SensorObserverService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private store: Store<{ sensorList: { sensors: SensorModel[] } }>
     ) {}
 
     ngOnDestroy() {
@@ -34,7 +35,9 @@ export class EditFormWrapperComponent implements OnDestroy {
                     this.snackBar.open(
                         `You successfully updated sensor ${response.name}.`
                     );
-                    this.sensorObserverService.updateSensor(response);
+                    this.store.dispatch(
+                        new SensorActions.UpdateSensor(response)
+                    );
                     this.dialog.close();
                 },
                 erorr =>

@@ -1,10 +1,11 @@
+import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
 import { SensorsService } from './../services/sensors.service';
-import { SensorObserverService } from '../services/sensor-observer.service';
+import * as SensorActions from './../store/sensor.actions';
 import { SensorModel } from './../models/sensor.model';
 
 @Component({
@@ -17,20 +18,16 @@ export class EditCardComponent implements OnInit, OnDestroy {
     allSensors: SensorModel[];
 
     constructor(
-        private sensorObserverService: SensorObserverService,
+        private store: Store<{ sensorList: { sensors: SensorModel[] } }>,
         private sensorsService: SensorsService,
         private snackBar: MatSnackBar
     ) {}
 
     ngOnInit() {
         this.subs.add(
-            this.sensorObserverService.allSendors$.subscribe(
-                (response: SensorModel[]) => {
-                    if (Array.isArray(response)) {
-                        this.allSensors = response;
-                    }
-                }
-            )
+            this.store
+                .select('sensorList')
+                .subscribe(({ sensors }) => (this.allSensors = sensors))
         );
     }
 
@@ -45,7 +42,9 @@ export class EditCardComponent implements OnInit, OnDestroy {
                     this.snackBar.open(
                         `You successfully updated sensor ${response.name}.`
                     );
-                    this.sensorObserverService.updateSensor(response);
+                    this.store.dispatch(
+                        new SensorActions.UpdateSensor(response)
+                    );
                 },
                 erorr =>
                     this.snackBar.open(

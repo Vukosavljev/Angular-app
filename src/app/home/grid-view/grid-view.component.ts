@@ -14,9 +14,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 
+import * as SensorActions from './../../store/sensor.actions';
 import { EditFormWrapperComponent } from './edit-form-wrapper/edit-form-wrapper.component';
 import { SensorsService } from './../../services/sensors.service';
-import { SensorObserverService } from './../../services/sensor-observer.service';
 import { SensorModel } from './../../models/sensor.model';
 import { SearchModel } from './../../models/search.model';
 
@@ -41,7 +41,6 @@ export class GridViewComponent implements OnInit, OnDestroy {
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     constructor(
-        private sensorObserverService: SensorObserverService,
         private sensorService: SensorsService,
         private snackBar: MatSnackBar,
         private dialog: MatDialog,
@@ -84,7 +83,7 @@ export class GridViewComponent implements OnInit, OnDestroy {
             this.sensorService
                 .deleteSensor(id)
                 .subscribe((deletedSensor: SensorModel) => {
-                    this.sensorObserverService.deleteSensor(id);
+                    this.store.dispatch(new SensorActions.DeleteSensor(id));
                     this.snackBar.open(
                         `You successfully deleted sensor ${deletedSensor.name}.`
                     );

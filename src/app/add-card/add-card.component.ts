@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
+import * as SensorActions from './../store/sensor.actions';
 import { SensorsService } from './../services/sensors.service';
-import { SensorObserverService } from '../services/sensor-observer.service';
 import { SensorModel } from './../models/sensor.model';
 
 @Component({
@@ -13,19 +14,17 @@ import { SensorModel } from './../models/sensor.model';
     templateUrl: './add-card.component.html',
     styleUrls: ['./add-card.component.scss']
 })
-export class AddCardComponent implements OnInit, OnDestroy {
+export class AddCardComponent implements OnDestroy {
     private subscriptions = new Subscription();
 
     headerTitle = 'Add new sensor';
     buttonTitle = 'Save sensor';
     constructor(
         private sensorsService: SensorsService,
-        private sensorobserverService: SensorObserverService,
+        private store: Store<{ sensorList: { sensors: SensorModel[] } }>,
         private snackBar: MatSnackBar,
         private router: Router
     ) {}
-
-    ngOnInit() {}
 
     ngOnDestroy() {
         this.subscriptions.unsubscribe();
@@ -37,7 +36,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
                 this.snackBar.open(
                     `You successfully added ${newSensor.name} sensor.`
                 );
-                this.sensorobserverService.addSensor(newSensor);
+                this.store.dispatch(new SensorActions.AddSensor(newSensor));
                 this.router.navigate(['home']);
             },
             error => {
