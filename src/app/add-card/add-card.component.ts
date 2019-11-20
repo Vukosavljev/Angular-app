@@ -31,26 +31,21 @@ export class AddCardComponent implements OnInit, OnDestroy {
         this.subscriptions.unsubscribe();
     }
 
-    onSubmit(formValue) {
-        this.subscriptions = this.sensorsService
-            .addSensor({
-                ...formValue,
-                lastUpdate: new Date().getTime()
-            })
-            .subscribe(
-                (newSensor: SensorModel) => {
-                    this.snackBar.open(
-                        `You successfully added ${newSensor.name} sensor.`
-                    );
-                    this.sensorobserverService.addSensor(newSensor);
-                    this.router.navigate(['home']);
-                },
-                error => {
-                    this.snackBar.open(
-                        'Your sensor has not been added, please try again later.'
-                    );
-                    console.log(error);
-                }
-            );
+    onSubmit(formValue: SensorModel) {
+        this.subscriptions = this.sensorsService.addSensor(formValue).subscribe(
+            (newSensor: SensorModel) => {
+                this.snackBar.open(
+                    `You successfully added ${newSensor.name} sensor.`
+                );
+                this.sensorobserverService.addSensor(newSensor);
+                this.router.navigate(['home']);
+            },
+            error => {
+                this.snackBar.open(
+                    'Your sensor has not been added, please try again later.'
+                );
+                console.log(error);
+            }
+        );
     }
 }

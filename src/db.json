@@ -11,14 +11,14 @@
       "type": "FEED"
     },
     {
-      "id": 1,
       "name": "Humidity",
-      "image": "images/ico_humidity.svg",
       "path": "DemoDevice/Humidity",
+      "type": "FEED",
+      "image": "images/ico_humidity.svg",
       "unitSymbol": "%",
       "value": "43.23",
-      "lastUpdate": 1507211004000,
-      "type": "FEED"
+      "id": 1,
+      "lastUpdate": 1574244722928
     },
     {
       "id": 2,
@@ -69,15 +69,6 @@
       "value": true,
       "lastUpdate": 1507211004000,
       "type": "ALARM"
-    },
-    {
-      "name": "Novo Ime",
-      "path": "path",
-      "type": "ALARM",
-      "image": "images/ico_pressure.svg",
-      "unitSymbol": null,
-      "value": false,
-      "id": 8
     },
     {
       "name": "spec1",
@@ -178,6 +169,16 @@
       "value": "sdf",
       "id": 23,
       "lastUpdate": 1574025766709
+    },
+    {
+      "name": "new senspr",
+      "path": "path",
+      "type": "ACTUATOR",
+      "image": "images/ico_temperature.svg",
+      "unitSymbol": "$",
+      "value": "88",
+      "id": 24,
+      "lastUpdate": 1574240057103
     }
   ]
 }

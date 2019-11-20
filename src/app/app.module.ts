@@ -15,6 +15,7 @@ import { EditCardComponent } from './edit-card/edit-card.component';
 import { HomeComponent } from './home/home.component';
 import { CardViewComponent } from './home/card-view/card-view.component';
 import { CardComponent } from './home/card-view/card/card.component';
+import { EditFormWrapperComponent } from './home/grid-view/edit-form-wrapper/edit-form-wrapper.component';
 
 @NgModule({
     declarations: [
@@ -26,12 +27,14 @@ import { CardComponent } from './home/card-view/card/card.component';
         CardComponent,
         AddCardComponent,
         EditCardComponent,
-        GetHhMmPipe
+        GetHhMmPipe,
+        EditFormWrapperComponent
     ],
     imports: [FlexLayoutModule, SharedModule, AppRoutingModule],
     providers: [
         { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
     ],
+    entryComponents: [EditFormWrapperComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -14,7 +14,7 @@ export class CardFormComponent implements OnInit {
     @Input() title: string;
     @Input() sensorData: SensorModel;
     @Input() buttonTitle: string;
-    @Output() formValue = new EventEmitter();
+    @Output() formValue = new EventEmitter<SensorModel>();
 
     sensorForm: FormGroup;
     sensorTypes = SENSOR_TYPES;
@@ -40,7 +40,8 @@ export class CardFormComponent implements OnInit {
     onSubmit() {
         this.formValue.emit({
             ...this.sensorForm.value,
-            id: this.initValue('id')
+            id: this.initValue('id'),
+            lastUpdate: new Date().getTime()
         });
     }
 }

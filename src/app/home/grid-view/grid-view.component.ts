@@ -1,13 +1,20 @@
-import { SensorsService } from './../../services/sensors.service';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    OnDestroy,
+    ViewEncapsulation
+} from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material';
+import { MatSort, MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 
+import { EditFormWrapperComponent } from './edit-form-wrapper/edit-form-wrapper.component';
+import { SensorsService } from './../../services/sensors.service';
 import { SensorObserverService } from './../../services/sensor-observer.service';
 import { SensorModel } from './../../models/sensor.model';
 import { SearchModel } from './../../models/search.model';
@@ -15,7 +22,8 @@ import { SearchModel } from './../../models/search.model';
 @Component({
     selector: 'app-grid-view',
     templateUrl: './grid-view.component.html',
-    styleUrls: ['./grid-view.component.scss']
+    styleUrls: ['./grid-view.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class GridViewComponent implements OnInit, OnDestroy {
     private subs = new Subscription();
@@ -34,7 +42,8 @@ export class GridViewComponent implements OnInit, OnDestroy {
     constructor(
         private sensorObserverService: SensorObserverService,
         private sensorService: SensorsService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private dialog: MatDialog
     ) {}
 
     ngOnInit() {
@@ -93,6 +102,9 @@ export class GridViewComponent implements OnInit, OnDestroy {
     }
 
     onEdit(element: SensorModel) {
-        console.log(element);
+        this.dialog.open(EditFormWrapperComponent, {
+            data: element,
+            panelClass: 'edit-sensor-dialog'
+        });
     }
 }

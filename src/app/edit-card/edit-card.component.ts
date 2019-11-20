@@ -25,7 +25,11 @@ export class EditCardComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subs.add(
             this.sensorObserverService.allSendors$.subscribe(
-                (response: SensorModel[]) => (this.allSensors = response)
+                (response: SensorModel[]) => {
+                    if (Array.isArray(response)) {
+                        this.allSensors = response;
+                    }
+                }
             )
         );
     }
@@ -34,16 +38,10 @@ export class EditCardComponent implements OnInit, OnDestroy {
         this.subs.unsubscribe();
     }
 
-    onSubmit(formValue) {
-        const newSensor = {
-            ...formValue,
-            lastUpdated: new Date().getTime()
-        };
-
+    onSubmit(formValue: SensorModel) {
         this.subs.add(
-            this.sensorsService.updateSensor(newSensor).subscribe(
+            this.sensorsService.updateSensor(formValue).subscribe(
                 (response: SensorModel) => {
-                    console.log(response);
                     this.snackBar.open(
                         `You successfully updated sensor ${response.name}.`
                     );
